@@ -1,0 +1,855 @@
+[START]
+2020-05-14-13-17-15
+==============================
+Max utt len = 52, mean utt len = 16.96
+Max dlg len = 22, mean dlg len = 6.73
+Max utt len = 49, mean utt len = 17.30
+Max dlg len = 17, mean dlg len = 7.37
+Max utt len = 45, mean utt len = 17.29
+Max dlg len = 18, mean dlg len = 7.37
+cut off at word company with frequency=19,
+OOV rate = 0.64%
+Raw vocab size 5229 in train set and final vocab size 1004
+================= domain = hotel, 
+goal vocab size of train set = 147, 
+cut off at word fail_info|name|warkworth house with frequency = 3, 
+OOV rate = 0.00
+================= domain = restaurant, 
+goal vocab size of train set = 450, 
+cut off at word fail_info|name|anatolia with frequency = 1, 
+OOV rate = 0.00
+================= domain = train, 
+goal vocab size of train set = 160, 
+cut off at word info|leaveAt|20:30 with frequency = 13, 
+OOV rate = 0.00
+================= domain = attraction, 
+goal vocab size of train set = 192, 
+cut off at word info|name|little saint mary's church with frequency = 1, 
+OOV rate = 0.00
+================= domain = hospital, 
+goal vocab size of train set = 50, 
+cut off at word info|department|neurosciences with frequency = 1, 
+OOV rate = 0.00
+================= domain = police, 
+goal vocab size of train set = 3, 
+cut off at word reqt|address with frequency = 157, 
+OOV rate = 0.00
+================= domain = taxi, 
+goal vocab size of train set = 541, 
+cut off at word info|destination|yippee noodle bar with frequency = 1, 
+OOV rate = 0.00
+Loading corpus finished.
+SysPerfectBD2Cat (
+  (utt_encoder): RnnUttEncoder(
+    (embedding): Embedding(1004, 100)
+    (rnn): EncoderRNN(
+      (input_dropout): Dropout(p=0.5, inplace=False)
+      (rnn): GRU(100, 300, batch_first=True, dropout=0.5, bidirectional=True)
+    )
+    (key_w): Linear(in_features=600, out_features=300, bias=True)
+    (query): Linear(in_features=300, out_features=1, bias=True)
+  ), parameters=1004601
+  (c2z): Hidden2Discrete(
+    (p_h): Linear(in_features=724, out_features=200, bias=True)
+  ), parameters=145000
+  (z_embedding): Linear(in_features=200, out_features=300, bias=False), parameters=60000
+  (gumbel_connector): GumbelConnector(), parameters=0
+  (decoder): DecoderRNN(
+    (input_dropout): Dropout(p=0.5, inplace=False)
+    (rnn): LSTM(100, 300, batch_first=True, dropout=0.5)
+    (embedding): Embedding(1004, 100)
+    (attention): Attention(
+      (linear_out): Linear(in_features=600, out_features=300, bias=True)
+      (dec_w): Linear(in_features=300, out_features=300, bias=True)
+      (attn_w): Linear(in_features=300, out_features=300, bias=True)
+      (query_w): Linear(in_features=300, out_features=1, bias=True)
+    )
+    (project): Linear(in_features=300, out_features=1004, bias=True)
+  ), parameters=1246205
+  (nll): NLLEntropy(), parameters=0
+  (cat_kl_loss): CatKLLoss(), parameters=0
+  (entropy_loss): Entropy(), parameters=0
+) Total Parameters=2455806
+***** Training Begins at 2020-05-14 13-17-31 *****
+***** Epoch 0/50 *****
+300/1416-(0.000): Train nll PPL 49.465 pi_kl 1.690 diversity 0.055 b_pr 1.435 mi 0.255
+600/1416-(0.000): Train nll PPL 14.749 pi_kl 2.222 diversity 0.037 b_pr 1.564 mi 0.658
+900/1416-(0.000): Train nll PPL 10.371 pi_kl 2.362 diversity 0.036 b_pr 1.548 mi 0.814
+1200/1416-(0.000): Train nll PPL 8.615 pi_kl 2.436 diversity 0.034 b_pr 1.490 mi 0.946
+Checkpoint step at 2020-05-14 13-18-15
+==== Evaluating Model ====
+Train nll PPL 14.310 pi_kl 2.228 diversity 0.039 b_pr 1.507 mi 0.722
+done epoch 0 -> 1
+Val nll PPL 6.780 pi_kl 2.557 diversity 0.036 b_pr 1.480 mi 1.077
+Total valid loss = 1.9164680755656698
+Test nll PPL 6.706 pi_kl 2.554 diversity 0.036 b_pr 1.481 mi 1.073
+Total valid loss = 1.9056135644083438
+Update patience to 10
+!!Model Saved with loss = 1.9164680755656698,at 2020-05-14 13-19-09.
+
+***** Epoch 1/50 *****
+84/1416-(0.000): Train nll PPL 7.617 pi_kl 2.503 diversity 0.033 b_pr 1.467 mi 1.036
+384/1416-(0.000): Train nll PPL 7.195 pi_kl 2.546 diversity 0.031 b_pr 1.484 mi 1.062
+684/1416-(0.000): Train nll PPL 6.718 pi_kl 2.577 diversity 0.031 b_pr 1.473 mi 1.104
+984/1416-(0.000): Train nll PPL 6.386 pi_kl 2.557 diversity 0.028 b_pr 1.433 mi 1.124
+1284/1416-(0.000): Train nll PPL 6.084 pi_kl 2.539 diversity 0.028 b_pr 1.387 mi 1.152
+Checkpoint step at 2020-05-14 13-19-55
+==== Evaluating Model ====
+Train nll PPL 6.589 pi_kl 2.551 diversity 0.030 b_pr 1.439 mi 1.112
+done epoch 1 -> 2
+Val nll PPL 5.489 pi_kl 2.597 diversity 0.028 b_pr 1.438 mi 1.159
+Total valid loss = 1.7053155883498814
+Test nll PPL 5.433 pi_kl 2.596 diversity 0.028 b_pr 1.438 mi 1.158
+Total valid loss = 1.6950936234515646
+Update patience to 10
+!!Model Saved with loss = 1.7053155883498814,at 2020-05-14 13-20-13.
+
+***** Epoch 2/50 *****
+168/1416-(0.000): Train nll PPL 5.969 pi_kl 2.564 diversity 0.030 b_pr 1.377 mi 1.187
+468/1416-(0.000): Train nll PPL 5.852 pi_kl 2.527 diversity 0.029 b_pr 1.335 mi 1.192
+768/1416-(0.000): Train nll PPL 5.711 pi_kl 2.545 diversity 0.030 b_pr 1.326 mi 1.219
+1068/1416-(0.000): Train nll PPL 5.506 pi_kl 2.548 diversity 0.029 b_pr 1.308 mi 1.240
+1368/1416-(0.000): Train nll PPL 5.394 pi_kl 2.562 diversity 0.031 b_pr 1.312 mi 1.250
+Checkpoint step at 2020-05-14 13-20-55
+==== Evaluating Model ====
+Train nll PPL 5.644 pi_kl 2.548 diversity 0.030 b_pr 1.326 mi 1.222
+done epoch 2 -> 3
+Val nll PPL 5.035 pi_kl 2.620 diversity 0.031 b_pr 1.355 mi 1.265
+Total valid loss = 1.6190740258797356
+Test nll PPL 4.986 pi_kl 2.619 diversity 0.032 b_pr 1.356 mi 1.262
+Total valid loss = 1.6093219990315644
+Update patience to 10
+!!Model Saved with loss = 1.6190740258797356,at 2020-05-14 13-21-14.
+
+***** Epoch 3/50 *****
+252/1416-(0.000): Train nll PPL 5.348 pi_kl 2.564 diversity 0.031 b_pr 1.295 mi 1.269
+552/1416-(0.000): Train nll PPL 5.282 pi_kl 2.541 diversity 0.032 b_pr 1.261 mi 1.281
+852/1416-(0.000): Train nll PPL 5.253 pi_kl 2.556 diversity 0.031 b_pr 1.265 mi 1.292
+1152/1416-(0.000): Train nll PPL 5.180 pi_kl 2.583 diversity 0.033 b_pr 1.284 mi 1.299
+Checkpoint step at 2020-05-14 13-21-50
+==== Evaluating Model ====
+Train nll PPL 5.220 pi_kl 2.565 diversity 0.032 b_pr 1.272 mi 1.293
+done epoch 3 -> 4
+Val nll PPL 4.821 pi_kl 2.613 diversity 0.033 b_pr 1.296 mi 1.316
+Total valid loss = 1.5756699603536855
+Test nll PPL 4.786 pi_kl 2.613 diversity 0.034 b_pr 1.296 mi 1.317
+Total valid loss = 1.5682598238405974
+Update patience to 10
+!!Model Saved with loss = 1.5756699603536855,at 2020-05-14 13-22-07.
+
+***** Epoch 4/50 *****
+36/1416-(0.000): Train nll PPL 5.063 pi_kl 2.571 diversity 0.034 b_pr 1.275 mi 1.296
+336/1416-(0.000): Train nll PPL 4.965 pi_kl 2.591 diversity 0.034 b_pr 1.275 mi 1.316
+636/1416-(0.000): Train nll PPL 5.036 pi_kl 2.591 diversity 0.034 b_pr 1.257 mi 1.333
+936/1416-(0.000): Train nll PPL 4.986 pi_kl 2.596 diversity 0.034 b_pr 1.256 mi 1.340
+1236/1416-(0.000): Train nll PPL 4.887 pi_kl 2.586 diversity 0.033 b_pr 1.223 mi 1.363
+Checkpoint step at 2020-05-14 13-22-49
+==== Evaluating Model ====
+Train nll PPL 4.964 pi_kl 2.590 diversity 0.034 b_pr 1.249 mi 1.340
+done epoch 4 -> 5
+Val nll PPL 4.651 pi_kl 2.649 diversity 0.033 b_pr 1.281 mi 1.368
+Total valid loss = 1.5398231480432594
+Test nll PPL 4.603 pi_kl 2.647 diversity 0.033 b_pr 1.278 mi 1.369
+Total valid loss = 1.5293526737586312
+Update patience to 10
+!!Model Saved with loss = 1.5398231480432594,at 2020-05-14 13-23-08.
+
+***** Epoch 5/50 *****
+120/1416-(0.000): Train nll PPL 4.690 pi_kl 2.598 diversity 0.033 b_pr 1.226 mi 1.372
+420/1416-(0.000): Train nll PPL 4.717 pi_kl 2.610 diversity 0.033 b_pr 1.232 mi 1.378
+720/1416-(0.000): Train nll PPL 4.829 pi_kl 2.599 diversity 0.033 b_pr 1.219 mi 1.380
+1020/1416-(0.000): Train nll PPL 4.682 pi_kl 2.605 diversity 0.034 b_pr 1.232 mi 1.372
+1320/1416-(0.000): Train nll PPL 4.722 pi_kl 2.604 diversity 0.034 b_pr 1.226 mi 1.378
+Checkpoint step at 2020-05-14 13-23-48
+==== Evaluating Model ====
+Train nll PPL 4.730 pi_kl 2.605 diversity 0.034 b_pr 1.227 mi 1.378
+done epoch 5 -> 6
+Val nll PPL 4.533 pi_kl 2.666 diversity 0.034 b_pr 1.286 mi 1.380
+Total valid loss = 1.5139952742535134
+Test nll PPL 4.490 pi_kl 2.665 diversity 0.034 b_pr 1.285 mi 1.381
+Total valid loss = 1.5046224044716876
+Update patience to 12.0
+!!Model Saved with loss = 1.5139952742535134,at 2020-05-14 13-24-07.
+
+***** Epoch 6/50 *****
+204/1416-(0.000): Train nll PPL 4.735 pi_kl 2.614 diversity 0.034 b_pr 1.214 mi 1.401
+504/1416-(0.000): Train nll PPL 4.619 pi_kl 2.613 diversity 0.035 b_pr 1.229 mi 1.384
+804/1416-(0.000): Train nll PPL 4.589 pi_kl 2.609 diversity 0.035 b_pr 1.203 mi 1.406
+1104/1416-(0.000): Train nll PPL 4.607 pi_kl 2.623 diversity 0.034 b_pr 1.213 mi 1.409
+1404/1416-(0.000): Train nll PPL 4.519 pi_kl 2.633 diversity 0.035 b_pr 1.227 mi 1.405
+Checkpoint step at 2020-05-14 13-24-43
+==== Evaluating Model ====
+Train nll PPL 4.604 pi_kl 2.619 diversity 0.035 b_pr 1.217 mi 1.401
+done epoch 6 -> 7
+Val nll PPL 4.466 pi_kl 2.675 diversity 0.035 b_pr 1.271 mi 1.404
+Total valid loss = 1.49923306081606
+Test nll PPL 4.415 pi_kl 2.675 diversity 0.035 b_pr 1.269 mi 1.406
+Total valid loss = 1.4876082705414813
+Update patience to 14.0
+!!Model Saved with loss = 1.49923306081606,at 2020-05-14 13-25-01.
+
+***** Epoch 7/50 *****
+288/1416-(0.000): Train nll PPL 4.547 pi_kl 2.622 diversity 0.036 b_pr 1.211 mi 1.412
+588/1416-(0.000): Train nll PPL 4.576 pi_kl 2.633 diversity 0.036 b_pr 1.207 mi 1.426
+888/1416-(0.000): Train nll PPL 4.539 pi_kl 2.628 diversity 0.037 b_pr 1.198 mi 1.430
+1188/1416-(0.000): Train nll PPL 4.465 pi_kl 2.621 diversity 0.036 b_pr 1.189 mi 1.432
+Checkpoint step at 2020-05-14 13-25-38
+==== Evaluating Model ====
+Train nll PPL 4.519 pi_kl 2.625 diversity 0.036 b_pr 1.201 mi 1.424
+done epoch 7 -> 8
+Val nll PPL 4.422 pi_kl 2.661 diversity 0.037 b_pr 1.255 mi 1.406
+Total valid loss = 1.4893530156301416
+Test nll PPL 4.378 pi_kl 2.660 diversity 0.037 b_pr 1.251 mi 1.409
+Total valid loss = 1.4792397618293762
+Update patience to 16.0
+!!Model Saved with loss = 1.4893530156301416,at 2020-05-14 13-25-56.
+
+***** Epoch 8/50 *****
+72/1416-(0.000): Train nll PPL 4.400 pi_kl 2.625 diversity 0.036 b_pr 1.194 mi 1.431
+372/1416-(0.000): Train nll PPL 4.445 pi_kl 2.633 diversity 0.035 b_pr 1.195 mi 1.438
+672/1416-(0.000): Train nll PPL 4.389 pi_kl 2.644 diversity 0.035 b_pr 1.213 mi 1.431
+972/1416-(0.000): Train nll PPL 4.445 pi_kl 2.627 diversity 0.034 b_pr 1.192 mi 1.435
+1272/1416-(0.000): Train nll PPL 4.311 pi_kl 2.635 diversity 0.035 b_pr 1.195 mi 1.439
+Checkpoint step at 2020-05-14 13-26-48
+==== Evaluating Model ====
+Train nll PPL 4.389 pi_kl 2.633 diversity 0.035 b_pr 1.197 mi 1.436
+done epoch 8 -> 9
+Val nll PPL 4.372 pi_kl 2.665 diversity 0.035 b_pr 1.246 mi 1.419
+Total valid loss = 1.477838689347972
+Test nll PPL 4.325 pi_kl 2.663 diversity 0.035 b_pr 1.243 mi 1.420
+Total valid loss = 1.4669719499090443
+Update patience to 18.0
+!!Model Saved with loss = 1.477838689347972,at 2020-05-14 13-27-04.
+
+***** Epoch 9/50 *****
+156/1416-(0.000): Train nll PPL 4.252 pi_kl 2.636 diversity 0.036 b_pr 1.198 mi 1.438
+456/1416-(0.000): Train nll PPL 4.343 pi_kl 2.638 diversity 0.036 b_pr 1.188 mi 1.450
+756/1416-(0.000): Train nll PPL 4.365 pi_kl 2.643 diversity 0.036 b_pr 1.185 mi 1.457
+1056/1416-(0.000): Train nll PPL 4.349 pi_kl 2.639 diversity 0.035 b_pr 1.183 mi 1.456
+1356/1416-(0.000): Train nll PPL 4.374 pi_kl 2.641 diversity 0.036 b_pr 1.182 mi 1.459
+Checkpoint step at 2020-05-14 13-27-46
+==== Evaluating Model ====
+Train nll PPL 4.339 pi_kl 2.639 diversity 0.036 b_pr 1.185 mi 1.454
+done epoch 9 -> 10
+Val nll PPL 4.315 pi_kl 2.678 diversity 0.035 b_pr 1.231 mi 1.447
+Total valid loss = 1.4647488480028898
+Test nll PPL 4.260 pi_kl 2.677 diversity 0.035 b_pr 1.227 mi 1.449
+Total valid loss = 1.4520354130993718
+Update patience to 20.0
+!!Model Saved with loss = 1.4647488480028898,at 2020-05-14 13-28-04.
+
+***** Epoch 10/50 *****
+240/1416-(0.000): Train nll PPL 4.243 pi_kl 2.649 diversity 0.035 b_pr 1.185 mi 1.463
+540/1416-(0.000): Train nll PPL 4.162 pi_kl 2.648 diversity 0.037 b_pr 1.184 mi 1.464
+840/1416-(0.000): Train nll PPL 4.225 pi_kl 2.646 diversity 0.036 b_pr 1.173 mi 1.473
+1140/1416-(0.000): Train nll PPL 4.283 pi_kl 2.651 diversity 0.035 b_pr 1.184 mi 1.467
+Checkpoint step at 2020-05-14 13-28-47
+==== Evaluating Model ====
+Train nll PPL 4.239 pi_kl 2.647 diversity 0.036 b_pr 1.182 mi 1.465
+done epoch 10 -> 11
+Val nll PPL 4.288 pi_kl 2.670 diversity 0.035 b_pr 1.228 mi 1.442
+Total valid loss = 1.4584097509798797
+Test nll PPL 4.250 pi_kl 2.670 diversity 0.035 b_pr 1.225 mi 1.445
+Total valid loss = 1.44948658424875
+Update patience to 22.0
+!!Model Saved with loss = 1.4584097509798797,at 2020-05-14 13-29-04.
+
+***** Epoch 11/50 *****
+24/1416-(0.000): Train nll PPL 4.366 pi_kl 2.642 diversity 0.035 b_pr 1.167 mi 1.475
+324/1416-(0.000): Train nll PPL 4.290 pi_kl 2.633 diversity 0.035 b_pr 1.166 mi 1.467
+624/1416-(0.000): Train nll PPL 4.154 pi_kl 2.641 diversity 0.035 b_pr 1.165 mi 1.476
+924/1416-(0.000): Train nll PPL 4.179 pi_kl 2.650 diversity 0.035 b_pr 1.180 mi 1.470
+1224/1416-(0.000): Train nll PPL 4.168 pi_kl 2.638 diversity 0.036 b_pr 1.168 mi 1.471
+Checkpoint step at 2020-05-14 13-29-49
+==== Evaluating Model ====
+Train nll PPL 4.198 pi_kl 2.641 diversity 0.035 b_pr 1.170 mi 1.472
+done epoch 11 -> 12
+Val nll PPL 4.271 pi_kl 2.670 diversity 0.037 b_pr 1.214 mi 1.456
+Total valid loss = 1.4544268887975942
+Test nll PPL 4.219 pi_kl 2.671 diversity 0.037 b_pr 1.213 mi 1.459
+Total valid loss = 1.4422729927560558
+!!Model Saved with loss = 1.4544268887975942,at 2020-05-14 13-30-07.
+
+***** Epoch 12/50 *****
+108/1416-(0.000): Train nll PPL 4.161 pi_kl 2.640 diversity 0.036 b_pr 1.156 mi 1.483
+408/1416-(0.000): Train nll PPL 4.201 pi_kl 2.647 diversity 0.035 b_pr 1.160 mi 1.487
+708/1416-(0.000): Train nll PPL 4.207 pi_kl 2.637 diversity 0.036 b_pr 1.160 mi 1.477
+1008/1416-(0.000): Train nll PPL 4.070 pi_kl 2.644 diversity 0.035 b_pr 1.155 mi 1.489
+1308/1416-(0.000): Train nll PPL 4.072 pi_kl 2.639 diversity 0.035 b_pr 1.153 mi 1.486
+Checkpoint step at 2020-05-14 13-30-54
+==== Evaluating Model ====
+Train nll PPL 4.142 pi_kl 2.641 diversity 0.035 b_pr 1.157 mi 1.484
+done epoch 12 -> 13
+Val nll PPL 4.244 pi_kl 2.688 diversity 0.035 b_pr 1.223 mi 1.465
+Total valid loss = 1.4482607224713202
+Test nll PPL 4.203 pi_kl 2.688 diversity 0.035 b_pr 1.219 mi 1.469
+Total valid loss = 1.4384641300077023
+Update patience to 26.0
+!!Model Saved with loss = 1.4482607224713202,at 2020-05-14 13-31-09.
+
+***** Epoch 13/50 *****
+192/1416-(0.000): Train nll PPL 4.133 pi_kl 2.644 diversity 0.036 b_pr 1.153 mi 1.491
+492/1416-(0.000): Train nll PPL 4.128 pi_kl 2.638 diversity 0.036 b_pr 1.151 mi 1.487
+792/1416-(0.000): Train nll PPL 4.147 pi_kl 2.649 diversity 0.035 b_pr 1.171 mi 1.478
+1092/1416-(0.000): Train nll PPL 4.113 pi_kl 2.639 diversity 0.035 b_pr 1.150 mi 1.490
+1392/1416-(0.000): Train nll PPL 4.056 pi_kl 2.656 diversity 0.036 b_pr 1.159 mi 1.497
+Checkpoint step at 2020-05-14 13-31-51
+==== Evaluating Model ====
+Train nll PPL 4.113 pi_kl 2.645 diversity 0.036 b_pr 1.157 mi 1.488
+done epoch 13 -> 14
+Val nll PPL 4.218 pi_kl 2.672 diversity 0.035 b_pr 1.209 mi 1.462
+Total valid loss = 1.4421509053396142
+Test nll PPL 4.177 pi_kl 2.671 diversity 0.035 b_pr 1.206 mi 1.464
+Total valid loss = 1.4322678151337997
+Update patience to 28.0
+!!Model Saved with loss = 1.4421509053396142,at 2020-05-14 13-32-09.
+
+***** Epoch 14/50 *****
+276/1416-(0.000): Train nll PPL 4.058 pi_kl 2.647 diversity 0.035 b_pr 1.156 mi 1.490
+576/1416-(0.000): Train nll PPL 4.049 pi_kl 2.644 diversity 0.036 b_pr 1.151 mi 1.493
+876/1416-(0.000): Train nll PPL 4.042 pi_kl 2.638 diversity 0.036 b_pr 1.157 mi 1.481
+1176/1416-(0.000): Train nll PPL 4.070 pi_kl 2.642 diversity 0.036 b_pr 1.152 mi 1.490
+Checkpoint step at 2020-05-14 13-32-53
+==== Evaluating Model ====
+Train nll PPL 4.064 pi_kl 2.641 diversity 0.036 b_pr 1.152 mi 1.489
+done epoch 14 -> 15
+Val nll PPL 4.202 pi_kl 2.672 diversity 0.036 b_pr 1.195 mi 1.477
+Total valid loss = 1.4381583462590757
+Test nll PPL 4.147 pi_kl 2.673 diversity 0.036 b_pr 1.193 mi 1.480
+Total valid loss = 1.4250904710396477
+!!Model Saved with loss = 1.4381583462590757,at 2020-05-14 13-33-10.
+
+***** Epoch 15/50 *****
+60/1416-(0.000): Train nll PPL 3.871 pi_kl 2.646 diversity 0.036 b_pr 1.151 mi 1.495
+360/1416-(0.000): Train nll PPL 4.033 pi_kl 2.654 diversity 0.036 b_pr 1.143 mi 1.511
+660/1416-(0.000): Train nll PPL 4.005 pi_kl 2.647 diversity 0.036 b_pr 1.145 mi 1.502
+960/1416-(0.000): Train nll PPL 4.000 pi_kl 2.661 diversity 0.036 b_pr 1.152 mi 1.509
+1260/1416-(0.000): Train nll PPL 4.025 pi_kl 2.654 diversity 0.036 b_pr 1.153 mi 1.501
+Checkpoint step at 2020-05-14 13-33-40
+==== Evaluating Model ====
+Train nll PPL 4.010 pi_kl 2.653 diversity 0.036 b_pr 1.149 mi 1.504
+done epoch 15 -> 16
+Val nll PPL 4.177 pi_kl 2.677 diversity 0.035 b_pr 1.207 mi 1.470
+Total valid loss = 1.4321831506231557
+Test nll PPL 4.131 pi_kl 2.677 diversity 0.036 b_pr 1.204 mi 1.473
+Total valid loss = 1.4211731708568076
+Update patience to 32.0
+!!Model Saved with loss = 1.4321831506231557,at 2020-05-14 13-33-58.
+
+***** Epoch 16/50 *****
+144/1416-(0.000): Train nll PPL 4.050 pi_kl 2.641 diversity 0.036 b_pr 1.130 mi 1.511
+444/1416-(0.000): Train nll PPL 3.989 pi_kl 2.662 diversity 0.036 b_pr 1.143 mi 1.519
+744/1416-(0.000): Train nll PPL 3.937 pi_kl 2.651 diversity 0.036 b_pr 1.147 mi 1.503
+1044/1416-(0.000): Train nll PPL 3.960 pi_kl 2.657 diversity 0.036 b_pr 1.142 mi 1.515
+1344/1416-(0.000): Train nll PPL 3.977 pi_kl 2.655 diversity 0.036 b_pr 1.148 mi 1.507
+Checkpoint step at 2020-05-14 13-34-33
+==== Evaluating Model ====
+Train nll PPL 3.979 pi_kl 2.653 diversity 0.036 b_pr 1.142 mi 1.512
+done epoch 16 -> 17
+Val nll PPL 4.178 pi_kl 2.678 diversity 0.037 b_pr 1.202 mi 1.477
+Total valid loss = 1.4324276110400325
+Test nll PPL 4.128 pi_kl 2.679 diversity 0.037 b_pr 1.199 mi 1.480
+Total valid loss = 1.4205047762912253
+
+***** Epoch 17/50 *****
+228/1416-(0.000): Train nll PPL 4.011 pi_kl 2.648 diversity 0.037 b_pr 1.132 mi 1.516
+528/1416-(0.000): Train nll PPL 4.007 pi_kl 2.644 diversity 0.036 b_pr 1.140 mi 1.504
+828/1416-(0.000): Train nll PPL 3.916 pi_kl 2.637 diversity 0.036 b_pr 1.119 mi 1.518
+1128/1416-(0.000): Train nll PPL 3.890 pi_kl 2.656 diversity 0.036 b_pr 1.133 mi 1.524
+Checkpoint step at 2020-05-14 13-35-23
+==== Evaluating Model ====
+Train nll PPL 3.940 pi_kl 2.650 diversity 0.036 b_pr 1.135 mi 1.515
+done epoch 17 -> 18
+Val nll PPL 4.153 pi_kl 2.698 diversity 0.035 b_pr 1.207 mi 1.491
+Total valid loss = 1.4265214655710303
+Test nll PPL 4.111 pi_kl 2.698 diversity 0.036 b_pr 1.203 mi 1.495
+Total valid loss = 1.416408783974855
+!!Model Saved with loss = 1.4265214655710303,at 2020-05-14 13-35-40.
+
+***** Epoch 18/50 *****
+12/1416-(0.000): Train nll PPL 4.002 pi_kl 2.662 diversity 0.035 b_pr 1.144 mi 1.517
+312/1416-(0.000): Train nll PPL 3.912 pi_kl 2.668 diversity 0.036 b_pr 1.139 mi 1.529
+612/1416-(0.000): Train nll PPL 3.961 pi_kl 2.662 diversity 0.037 b_pr 1.146 mi 1.517
+912/1416-(0.000): Train nll PPL 3.992 pi_kl 2.660 diversity 0.036 b_pr 1.136 mi 1.525
+1212/1416-(0.000): Train nll PPL 3.889 pi_kl 2.656 diversity 0.036 b_pr 1.138 mi 1.518
+Checkpoint step at 2020-05-14 13-36-13
+==== Evaluating Model ====
+Train nll PPL 3.928 pi_kl 2.660 diversity 0.036 b_pr 1.137 mi 1.524
+done epoch 18 -> 19
+Val nll PPL 4.150 pi_kl 2.672 diversity 0.035 b_pr 1.168 mi 1.504
+Total valid loss = 1.425884257192197
+Test nll PPL 4.111 pi_kl 2.673 diversity 0.036 b_pr 1.166 mi 1.507
+Total valid loss = 1.4163367515024932
+Update patience to 38.0
+!!Model Saved with loss = 1.425884257192197,at 2020-05-14 13-36-32.
+
+***** Epoch 19/50 *****
+96/1416-(0.000): Train nll PPL 3.872 pi_kl 2.664 diversity 0.037 b_pr 1.138 mi 1.527
+396/1416-(0.000): Train nll PPL 3.887 pi_kl 2.671 diversity 0.036 b_pr 1.142 mi 1.529
+696/1416-(0.000): Train nll PPL 3.894 pi_kl 2.659 diversity 0.035 b_pr 1.130 mi 1.529
+996/1416-(0.000): Train nll PPL 3.908 pi_kl 2.657 diversity 0.037 b_pr 1.133 mi 1.524
+1296/1416-(0.000): Train nll PPL 3.977 pi_kl 2.658 diversity 0.037 b_pr 1.140 mi 1.517
+Checkpoint step at 2020-05-14 13-37-21
+==== Evaluating Model ====
+Train nll PPL 3.911 pi_kl 2.660 diversity 0.036 b_pr 1.135 mi 1.525
+done epoch 19 -> 20
+Val nll PPL 4.135 pi_kl 2.665 diversity 0.036 b_pr 1.170 mi 1.496
+Total valid loss = 1.4221412316612576
+Test nll PPL 4.081 pi_kl 2.665 diversity 0.036 b_pr 1.165 mi 1.500
+Total valid loss = 1.4090994923011115
+!!Model Saved with loss = 1.4221412316612576,at 2020-05-14 13-37-39.
+
+***** Epoch 20/50 *****
+180/1416-(0.000): Train nll PPL 3.837 pi_kl 2.649 diversity 0.036 b_pr 1.116 mi 1.533
+480/1416-(0.000): Train nll PPL 3.868 pi_kl 2.652 diversity 0.036 b_pr 1.125 mi 1.527
+780/1416-(0.000): Train nll PPL 3.821 pi_kl 2.660 diversity 0.036 b_pr 1.124 mi 1.536
+1080/1416-(0.000): Train nll PPL 3.884 pi_kl 2.652 diversity 0.036 b_pr 1.116 mi 1.535
+1380/1416-(0.000): Train nll PPL 3.858 pi_kl 2.646 diversity 0.036 b_pr 1.115 mi 1.531
+Checkpoint step at 2020-05-14 13-38-22
+==== Evaluating Model ====
+Train nll PPL 3.856 pi_kl 2.652 diversity 0.036 b_pr 1.119 mi 1.533
+done epoch 20 -> 21
+Val nll PPL 4.130 pi_kl 2.673 diversity 0.036 b_pr 1.179 mi 1.494
+Total valid loss = 1.4209471562634344
+Test nll PPL 4.092 pi_kl 2.676 diversity 0.036 b_pr 1.178 mi 1.498
+Total valid loss = 1.411677791243014
+!!Model Saved with loss = 1.4209471562634344,at 2020-05-14 13-38-41.
+
+***** Epoch 21/50 *****
+264/1416-(0.000): Train nll PPL 3.947 pi_kl 2.647 diversity 0.037 b_pr 1.114 mi 1.533
+564/1416-(0.000): Train nll PPL 3.756 pi_kl 2.663 diversity 0.037 b_pr 1.124 mi 1.539
+864/1416-(0.000): Train nll PPL 3.763 pi_kl 2.664 diversity 0.037 b_pr 1.115 mi 1.548
+1164/1416-(0.000): Train nll PPL 3.887 pi_kl 2.662 diversity 0.036 b_pr 1.124 mi 1.537
+Checkpoint step at 2020-05-14 13-39-22
+==== Evaluating Model ====
+Train nll PPL 3.835 pi_kl 2.659 diversity 0.036 b_pr 1.119 mi 1.540
+done epoch 21 -> 22
+Val nll PPL 4.133 pi_kl 2.684 diversity 0.036 b_pr 1.175 mi 1.509
+Total valid loss = 1.421723855578381
+Test nll PPL 4.088 pi_kl 2.685 diversity 0.036 b_pr 1.171 mi 1.514
+Total valid loss = 1.410690494723942
+
+***** Epoch 22/50 *****
+48/1416-(0.000): Train nll PPL 3.897 pi_kl 2.660 diversity 0.036 b_pr 1.107 mi 1.553
+348/1416-(0.000): Train nll PPL 3.834 pi_kl 2.668 diversity 0.036 b_pr 1.123 mi 1.545
+648/1416-(0.000): Train nll PPL 3.894 pi_kl 2.663 diversity 0.037 b_pr 1.114 mi 1.549
+948/1416-(0.000): Train nll PPL 3.771 pi_kl 2.670 diversity 0.037 b_pr 1.125 mi 1.544
+1248/1416-(0.000): Train nll PPL 3.760 pi_kl 2.678 diversity 0.037 b_pr 1.125 mi 1.552
+Checkpoint step at 2020-05-14 13-40-17
+==== Evaluating Model ====
+Train nll PPL 3.813 pi_kl 2.670 diversity 0.037 b_pr 1.122 mi 1.547
+done epoch 22 -> 23
+Val nll PPL 4.130 pi_kl 2.698 diversity 0.035 b_pr 1.186 mi 1.512
+Total valid loss = 1.4210768300554026
+Test nll PPL 4.083 pi_kl 2.697 diversity 0.036 b_pr 1.181 mi 1.515
+Total valid loss = 1.4095448918964553
+
+***** Epoch 23/50 *****
+132/1416-(0.000): Train nll PPL 3.772 pi_kl 2.671 diversity 0.036 b_pr 1.109 mi 1.562
+432/1416-(0.000): Train nll PPL 3.812 pi_kl 2.668 diversity 0.036 b_pr 1.121 mi 1.547
+732/1416-(0.000): Train nll PPL 3.858 pi_kl 2.668 diversity 0.037 b_pr 1.115 mi 1.553
+1032/1416-(0.000): Train nll PPL 3.836 pi_kl 2.675 diversity 0.037 b_pr 1.116 mi 1.559
+1332/1416-(0.000): Train nll PPL 3.771 pi_kl 2.674 diversity 0.037 b_pr 1.124 mi 1.551
+Checkpoint step at 2020-05-14 13-41-23
+==== Evaluating Model ====
+Train nll PPL 3.810 pi_kl 2.671 diversity 0.037 b_pr 1.118 mi 1.553
+done epoch 23 -> 24
+Val nll PPL 4.127 pi_kl 2.699 diversity 0.035 b_pr 1.181 mi 1.519
+Total valid loss = 1.4202533509420312
+Test nll PPL 4.084 pi_kl 2.697 diversity 0.036 b_pr 1.177 mi 1.520
+Total valid loss = 1.4097040399261143
+!!Model Saved with loss = 1.4202533509420312,at 2020-05-14 13-41-41.
+
+***** Epoch 24/50 *****
+216/1416-(0.000): Train nll PPL 3.740 pi_kl 2.675 diversity 0.036 b_pr 1.122 mi 1.553
+516/1416-(0.000): Train nll PPL 3.787 pi_kl 2.670 diversity 0.036 b_pr 1.122 mi 1.548
+816/1416-(0.000): Train nll PPL 3.778 pi_kl 2.680 diversity 0.037 b_pr 1.127 mi 1.553
+1116/1416-(0.000): Train nll PPL 3.801 pi_kl 2.670 diversity 0.037 b_pr 1.116 mi 1.553
+0/1416-(0.000): Train nll PPL 3.824 pi_kl 2.675 diversity 0.037 b_pr 1.115 mi 1.560
+Checkpoint step at 2020-05-14 13-42-24
+==== Evaluating Model ====
+Train nll PPL 3.789 pi_kl 2.674 diversity 0.037 b_pr 1.120 mi 1.554
+done epoch 24 -> 25
+Val nll PPL 4.111 pi_kl 2.704 diversity 0.036 b_pr 1.183 mi 1.521
+Total valid loss = 1.416434845717057
+Test nll PPL 4.064 pi_kl 2.704 diversity 0.037 b_pr 1.180 mi 1.524
+Total valid loss = 1.4049416811569877
+Update patience to 50.0
+!!Model Saved with loss = 1.416434845717057,at 2020-05-14 13-42-44.
+
+***** Epoch 25/50 *****
+300/1416-(0.000): Train nll PPL 3.710 pi_kl 2.685 diversity 0.037 b_pr 1.128 mi 1.557
+600/1416-(0.000): Train nll PPL 3.707 pi_kl 2.679 diversity 0.037 b_pr 1.112 mi 1.567
+900/1416-(0.000): Train nll PPL 3.738 pi_kl 2.681 diversity 0.037 b_pr 1.112 mi 1.570
+1200/1416-(0.000): Train nll PPL 3.802 pi_kl 2.674 diversity 0.038 b_pr 1.109 mi 1.565
+Checkpoint step at 2020-05-14 13-43-31
+==== Evaluating Model ====
+Train nll PPL 3.747 pi_kl 2.678 diversity 0.037 b_pr 1.114 mi 1.563
+done epoch 25 -> 26
+Val nll PPL 4.124 pi_kl 2.684 diversity 0.037 b_pr 1.159 mi 1.525
+Total valid loss = 1.4196079041646874
+Test nll PPL 4.088 pi_kl 2.683 diversity 0.037 b_pr 1.155 mi 1.528
+Total valid loss = 1.4107217353323231
+
+***** Epoch 26/50 *****
+84/1416-(0.000): Train nll PPL 3.741 pi_kl 2.667 diversity 0.038 b_pr 1.102 mi 1.565
+384/1416-(0.000): Train nll PPL 3.809 pi_kl 2.670 diversity 0.038 b_pr 1.112 mi 1.558
+684/1416-(0.000): Train nll PPL 3.646 pi_kl 2.680 diversity 0.038 b_pr 1.108 mi 1.573
+984/1416-(0.000): Train nll PPL 3.718 pi_kl 2.672 diversity 0.037 b_pr 1.105 mi 1.567
+1284/1416-(0.000): Train nll PPL 3.706 pi_kl 2.681 diversity 0.038 b_pr 1.109 mi 1.572
+Checkpoint step at 2020-05-14 13-44-23
+==== Evaluating Model ====
+Train nll PPL 3.721 pi_kl 2.676 diversity 0.038 b_pr 1.109 mi 1.567
+done epoch 26 -> 27
+Val nll PPL 4.108 pi_kl 2.706 diversity 0.037 b_pr 1.177 mi 1.529
+Total valid loss = 1.4157068138537199
+Test nll PPL 4.057 pi_kl 2.704 diversity 0.037 b_pr 1.173 mi 1.531
+Total valid loss = 1.4031291013178617
+!!Model Saved with loss = 1.4157068138537199,at 2020-05-14 13-44-44.
+
+***** Epoch 27/50 *****
+168/1416-(0.000): Train nll PPL 3.733 pi_kl 2.692 diversity 0.037 b_pr 1.127 mi 1.565
+468/1416-(0.000): Train nll PPL 3.799 pi_kl 2.667 diversity 0.037 b_pr 1.100 mi 1.566
+768/1416-(0.000): Train nll PPL 3.786 pi_kl 2.672 diversity 0.037 b_pr 1.094 mi 1.578
+1068/1416-(0.000): Train nll PPL 3.631 pi_kl 2.675 diversity 0.037 b_pr 1.102 mi 1.573
+1368/1416-(0.000): Train nll PPL 3.653 pi_kl 2.678 diversity 0.038 b_pr 1.106 mi 1.571
+Checkpoint step at 2020-05-14 13-45-34
+==== Evaluating Model ====
+Train nll PPL 3.718 pi_kl 2.676 diversity 0.037 b_pr 1.104 mi 1.571
+done epoch 27 -> 28
+Val nll PPL 4.124 pi_kl 2.700 diversity 0.037 b_pr 1.167 mi 1.533
+Total valid loss = 1.4195197846578516
+Test nll PPL 4.062 pi_kl 2.699 diversity 0.037 b_pr 1.164 mi 1.536
+Total valid loss = 1.4044306848360144
+
+***** Epoch 28/50 *****
+252/1416-(0.000): Train nll PPL 3.729 pi_kl 2.682 diversity 0.038 b_pr 1.107 mi 1.575
+552/1416-(0.000): Train nll PPL 3.757 pi_kl 2.682 diversity 0.038 b_pr 1.113 mi 1.570
+852/1416-(0.000): Train nll PPL 3.725 pi_kl 2.684 diversity 0.037 b_pr 1.105 mi 1.579
+1152/1416-(0.000): Train nll PPL 3.731 pi_kl 2.680 diversity 0.037 b_pr 1.107 mi 1.573
+Checkpoint step at 2020-05-14 13-46-39
+==== Evaluating Model ====
+Train nll PPL 3.712 pi_kl 2.684 diversity 0.037 b_pr 1.108 mi 1.575
+done epoch 28 -> 29
+Val nll PPL 4.111 pi_kl 2.716 diversity 0.036 b_pr 1.168 mi 1.548
+Total valid loss = 1.4164711159208547
+Test nll PPL 4.064 pi_kl 2.714 diversity 0.037 b_pr 1.164 mi 1.550
+Total valid loss = 1.4047733498656232
+
+***** Epoch 29/50 *****
+36/1416-(0.000): Train nll PPL 3.570 pi_kl 2.695 diversity 0.037 b_pr 1.086 mi 1.608
+336/1416-(0.000): Train nll PPL 3.678 pi_kl 2.692 diversity 0.038 b_pr 1.117 mi 1.575
+636/1416-(0.000): Train nll PPL 3.660 pi_kl 2.690 diversity 0.037 b_pr 1.105 mi 1.585
+936/1416-(0.000): Train nll PPL 3.739 pi_kl 2.682 diversity 0.038 b_pr 1.095 mi 1.587
+1236/1416-(0.000): Train nll PPL 3.738 pi_kl 2.691 diversity 0.038 b_pr 1.109 mi 1.582
+Checkpoint step at 2020-05-14 13-47-47
+==== Evaluating Model ====
+Train nll PPL 3.707 pi_kl 2.690 diversity 0.038 b_pr 1.109 mi 1.582
+done epoch 29 -> 30
+Val nll PPL 4.094 pi_kl 2.711 diversity 0.037 b_pr 1.168 mi 1.543
+Total valid loss = 1.4121516424676646
+Test nll PPL 4.048 pi_kl 2.710 diversity 0.037 b_pr 1.165 mi 1.545
+Total valid loss = 1.401006375188413
+!!Model Saved with loss = 1.4121516424676646,at 2020-05-14 13-48-09.
+
+***** Epoch 30/50 *****
+120/1416-(0.000): Train nll PPL 3.602 pi_kl 2.691 diversity 0.037 b_pr 1.109 mi 1.582
+420/1416-(0.000): Train nll PPL 3.564 pi_kl 2.693 diversity 0.038 b_pr 1.103 mi 1.590
+720/1416-(0.000): Train nll PPL 3.682 pi_kl 2.691 diversity 0.038 b_pr 1.105 mi 1.586
+1020/1416-(0.000): Train nll PPL 3.667 pi_kl 2.695 diversity 0.038 b_pr 1.106 mi 1.589
+1320/1416-(0.000): Train nll PPL 3.717 pi_kl 2.680 diversity 0.037 b_pr 1.095 mi 1.586
+Checkpoint step at 2020-05-14 13-48-48
+==== Evaluating Model ====
+Train nll PPL 3.653 pi_kl 2.689 diversity 0.038 b_pr 1.102 mi 1.587
+done epoch 30 -> 31
+Val nll PPL 4.105 pi_kl 2.702 diversity 0.037 b_pr 1.150 mi 1.553
+Total valid loss = 1.41487950242084
+Test nll PPL 4.066 pi_kl 2.702 diversity 0.037 b_pr 1.145 mi 1.556
+Total valid loss = 1.4053044681963713
+
+***** Epoch 31/50 *****
+204/1416-(0.000): Train nll PPL 3.731 pi_kl 2.691 diversity 0.038 b_pr 1.094 mi 1.597
+504/1416-(0.000): Train nll PPL 3.670 pi_kl 2.684 diversity 0.037 b_pr 1.098 mi 1.586
+804/1416-(0.000): Train nll PPL 3.597 pi_kl 2.687 diversity 0.038 b_pr 1.095 mi 1.592
+1104/1416-(0.000): Train nll PPL 3.632 pi_kl 2.691 diversity 0.038 b_pr 1.112 mi 1.579
+1404/1416-(0.000): Train nll PPL 3.650 pi_kl 2.685 diversity 0.037 b_pr 1.095 mi 1.590
+Checkpoint step at 2020-05-14 13-49-48
+==== Evaluating Model ====
+Train nll PPL 3.651 pi_kl 2.687 diversity 0.037 b_pr 1.099 mi 1.588
+done epoch 31 -> 32
+Val nll PPL 4.110 pi_kl 2.699 diversity 0.037 b_pr 1.148 mi 1.551
+Total valid loss = 1.416182039095008
+Test nll PPL 4.057 pi_kl 2.698 diversity 0.037 b_pr 1.142 mi 1.556
+Total valid loss = 1.403167630796847
+
+***** Epoch 32/50 *****
+288/1416-(0.000): Train nll PPL 3.707 pi_kl 2.681 diversity 0.037 b_pr 1.094 mi 1.587
+588/1416-(0.000): Train nll PPL 3.684 pi_kl 2.685 diversity 0.038 b_pr 1.098 mi 1.587
+888/1416-(0.000): Train nll PPL 3.575 pi_kl 2.694 diversity 0.037 b_pr 1.101 mi 1.593
+1188/1416-(0.000): Train nll PPL 3.570 pi_kl 2.699 diversity 0.038 b_pr 1.103 mi 1.596
+Checkpoint step at 2020-05-14 13-50-50
+==== Evaluating Model ====
+Train nll PPL 3.627 pi_kl 2.690 diversity 0.038 b_pr 1.097 mi 1.592
+done epoch 32 -> 33
+Val nll PPL 4.134 pi_kl 2.715 diversity 0.037 b_pr 1.162 mi 1.553
+Total valid loss = 1.4218430005985758
+Test nll PPL 4.073 pi_kl 2.712 diversity 0.037 b_pr 1.157 mi 1.556
+Total valid loss = 1.407026059212892
+
+***** Epoch 33/50 *****
+72/1416-(0.000): Train nll PPL 3.724 pi_kl 2.694 diversity 0.038 b_pr 1.117 mi 1.577
+372/1416-(0.000): Train nll PPL 3.675 pi_kl 2.703 diversity 0.037 b_pr 1.111 mi 1.591
+672/1416-(0.000): Train nll PPL 3.654 pi_kl 2.695 diversity 0.038 b_pr 1.096 mi 1.598
+972/1416-(0.000): Train nll PPL 3.631 pi_kl 2.689 diversity 0.038 b_pr 1.096 mi 1.593
+1272/1416-(0.000): Train nll PPL 3.591 pi_kl 2.694 diversity 0.038 b_pr 1.094 mi 1.600
+Checkpoint step at 2020-05-14 13-51-59
+==== Evaluating Model ====
+Train nll PPL 3.637 pi_kl 2.695 diversity 0.038 b_pr 1.099 mi 1.596
+done epoch 33 -> 34
+Val nll PPL 4.129 pi_kl 2.711 diversity 0.037 b_pr 1.160 mi 1.552
+Total valid loss = 1.4206543466319208
+Test nll PPL 4.084 pi_kl 2.712 diversity 0.037 b_pr 1.155 mi 1.556
+Total valid loss = 1.4097790282705556
+
+***** Epoch 34/50 *****
+156/1416-(0.000): Train nll PPL 3.632 pi_kl 2.698 diversity 0.037 b_pr 1.096 mi 1.602
+456/1416-(0.000): Train nll PPL 3.598 pi_kl 2.699 diversity 0.037 b_pr 1.101 mi 1.598
+756/1416-(0.000): Train nll PPL 3.625 pi_kl 2.691 diversity 0.038 b_pr 1.095 mi 1.596
+1056/1416-(0.000): Train nll PPL 3.651 pi_kl 2.691 diversity 0.038 b_pr 1.098 mi 1.593
+1356/1416-(0.000): Train nll PPL 3.669 pi_kl 2.690 diversity 0.038 b_pr 1.092 mi 1.598
+Checkpoint step at 2020-05-14 13-52-56
+==== Evaluating Model ====
+Train nll PPL 3.639 pi_kl 2.693 diversity 0.038 b_pr 1.096 mi 1.597
+done epoch 34 -> 35
+Val nll PPL 4.098 pi_kl 2.710 diversity 0.037 b_pr 1.167 mi 1.544
+Total valid loss = 1.4132611787837484
+Test nll PPL 4.048 pi_kl 2.708 diversity 0.037 b_pr 1.162 mi 1.547
+Total valid loss = 1.4010543102803437
+
+***** Epoch 35/50 *****
+240/1416-(0.000): Train nll PPL 3.538 pi_kl 2.692 diversity 0.038 b_pr 1.093 mi 1.598
+540/1416-(0.000): Train nll PPL 3.520 pi_kl 2.701 diversity 0.038 b_pr 1.093 mi 1.608
+840/1416-(0.000): Train nll PPL 3.569 pi_kl 2.692 diversity 0.037 b_pr 1.092 mi 1.599
+1140/1416-(0.000): Train nll PPL 3.608 pi_kl 2.692 diversity 0.037 b_pr 1.084 mi 1.608
+Checkpoint step at 2020-05-14 13-54-10
+==== Evaluating Model ====
+Train nll PPL 3.578 pi_kl 2.694 diversity 0.037 b_pr 1.090 mi 1.604
+done epoch 35 -> 36
+Val nll PPL 4.104 pi_kl 2.703 diversity 0.037 b_pr 1.148 mi 1.555
+Total valid loss = 1.4147644991460053
+Test nll PPL 4.055 pi_kl 2.703 diversity 0.037 b_pr 1.145 mi 1.558
+Total valid loss = 1.4027618843576182
+
+***** Epoch 36/50 *****
+24/1416-(0.000): Train nll PPL 3.642 pi_kl 2.685 diversity 0.037 b_pr 1.098 mi 1.588
+324/1416-(0.000): Train nll PPL 3.674 pi_kl 2.688 diversity 0.038 b_pr 1.091 mi 1.597
+624/1416-(0.000): Train nll PPL 3.510 pi_kl 2.691 diversity 0.038 b_pr 1.097 mi 1.594
+924/1416-(0.000): Train nll PPL 3.510 pi_kl 2.696 diversity 0.037 b_pr 1.085 mi 1.611
+1224/1416-(0.000): Train nll PPL 3.629 pi_kl 2.683 diversity 0.037 b_pr 1.079 mi 1.603
+Checkpoint step at 2020-05-14 13-55-12
+==== Evaluating Model ====
+Train nll PPL 3.578 pi_kl 2.691 diversity 0.038 b_pr 1.089 mi 1.601
+done epoch 36 -> 37
+Val nll PPL 4.109 pi_kl 2.710 diversity 0.036 b_pr 1.154 mi 1.556
+Total valid loss = 1.4158259111901987
+Test nll PPL 4.054 pi_kl 2.710 diversity 0.036 b_pr 1.152 mi 1.558
+Total valid loss = 1.402519819010859
+
+***** Epoch 37/50 *****
+108/1416-(0.000): Train nll PPL 3.507 pi_kl 2.696 diversity 0.038 b_pr 1.087 mi 1.608
+408/1416-(0.000): Train nll PPL 3.654 pi_kl 2.695 diversity 0.038 b_pr 1.092 mi 1.603
+708/1416-(0.000): Train nll PPL 3.681 pi_kl 2.699 diversity 0.038 b_pr 1.096 mi 1.604
+1008/1416-(0.000): Train nll PPL 3.498 pi_kl 2.701 diversity 0.038 b_pr 1.095 mi 1.607
+1308/1416-(0.000): Train nll PPL 3.513 pi_kl 2.696 diversity 0.038 b_pr 1.093 mi 1.603
+Checkpoint step at 2020-05-14 13-56-13
+==== Evaluating Model ====
+Train nll PPL 3.574 pi_kl 2.698 diversity 0.038 b_pr 1.094 mi 1.604
+done epoch 37 -> 38
+Val nll PPL 4.137 pi_kl 2.722 diversity 0.037 b_pr 1.150 mi 1.572
+Total valid loss = 1.4227624146834663
+Test nll PPL 4.086 pi_kl 2.721 diversity 0.037 b_pr 1.146 mi 1.575
+Total valid loss = 1.4103224935738936
+
+***** Epoch 38/50 *****
+192/1416-(0.000): Train nll PPL 3.583 pi_kl 2.697 diversity 0.038 b_pr 1.082 mi 1.615
+492/1416-(0.000): Train nll PPL 3.615 pi_kl 2.697 diversity 0.038 b_pr 1.084 mi 1.613
+792/1416-(0.000): Train nll PPL 3.607 pi_kl 2.697 diversity 0.038 b_pr 1.091 mi 1.606
+1092/1416-(0.000): Train nll PPL 3.599 pi_kl 2.699 diversity 0.038 b_pr 1.088 mi 1.611
+1392/1416-(0.000): Train nll PPL 3.469 pi_kl 2.708 diversity 0.038 b_pr 1.093 mi 1.616
+Checkpoint step at 2020-05-14 13-57-01
+==== Evaluating Model ====
+Train nll PPL 3.571 pi_kl 2.700 diversity 0.038 b_pr 1.088 mi 1.612
+done epoch 38 -> 39
+Val nll PPL 4.123 pi_kl 2.728 diversity 0.038 b_pr 1.149 mi 1.579
+Total valid loss = 1.419280215449955
+Test nll PPL 4.067 pi_kl 2.727 diversity 0.038 b_pr 1.145 mi 1.582
+Total valid loss = 1.405755228581636
+
+***** Epoch 39/50 *****
+276/1416-(0.000): Train nll PPL 3.523 pi_kl 2.706 diversity 0.037 b_pr 1.090 mi 1.616
+576/1416-(0.000): Train nll PPL 3.559 pi_kl 2.705 diversity 0.037 b_pr 1.095 mi 1.610
+876/1416-(0.000): Train nll PPL 3.599 pi_kl 2.708 diversity 0.038 b_pr 1.089 mi 1.619
+1176/1416-(0.000): Train nll PPL 3.578 pi_kl 2.707 diversity 0.038 b_pr 1.095 mi 1.612
+Checkpoint step at 2020-05-14 13-57-48
+==== Evaluating Model ====
+Train nll PPL 3.577 pi_kl 2.706 diversity 0.038 b_pr 1.093 mi 1.613
+done epoch 39 -> 40
+Val nll PPL 4.103 pi_kl 2.725 diversity 0.037 b_pr 1.152 mi 1.573
+Total valid loss = 1.4143798232078553
+Test nll PPL 4.050 pi_kl 2.723 diversity 0.037 b_pr 1.146 mi 1.576
+Total valid loss = 1.4015419892642809
+
+***** Epoch 40/50 *****
+60/1416-(0.000): Train nll PPL 3.394 pi_kl 2.705 diversity 0.039 b_pr 1.086 mi 1.619
+360/1416-(0.000): Train nll PPL 3.459 pi_kl 2.710 diversity 0.039 b_pr 1.097 mi 1.613
+660/1416-(0.000): Train nll PPL 3.483 pi_kl 2.708 diversity 0.038 b_pr 1.097 mi 1.610
+960/1416-(0.000): Train nll PPL 3.542 pi_kl 2.710 diversity 0.038 b_pr 1.091 mi 1.619
+1260/1416-(0.000): Train nll PPL 3.584 pi_kl 2.709 diversity 0.038 b_pr 1.089 mi 1.621
+Checkpoint step at 2020-05-14 13-58-32
+==== Evaluating Model ====
+Train nll PPL 3.517 pi_kl 2.708 diversity 0.038 b_pr 1.092 mi 1.616
+done epoch 40 -> 41
+Val nll PPL 4.086 pi_kl 2.726 diversity 0.038 b_pr 1.144 mi 1.582
+Total valid loss = 1.41017289109852
+Test nll PPL 4.047 pi_kl 2.725 diversity 0.038 b_pr 1.141 mi 1.584
+Total valid loss = 1.4006704382274462
+Update patience to 82.0
+!!Model Saved with loss = 1.41017289109852,at 2020-05-14 13-58-51.
+
+***** Epoch 41/50 *****
+144/1416-(0.000): Train nll PPL 3.594 pi_kl 2.708 diversity 0.038 b_pr 1.090 mi 1.618
+444/1416-(0.000): Train nll PPL 3.561 pi_kl 2.696 diversity 0.038 b_pr 1.082 mi 1.614
+744/1416-(0.000): Train nll PPL 3.459 pi_kl 2.700 diversity 0.038 b_pr 1.076 mi 1.624
+1044/1416-(0.000): Train nll PPL 3.515 pi_kl 2.706 diversity 0.039 b_pr 1.077 mi 1.629
+1344/1416-(0.000): Train nll PPL 3.512 pi_kl 2.707 diversity 0.039 b_pr 1.082 mi 1.625
+Checkpoint step at 2020-05-14 13-59-22
+==== Evaluating Model ====
+Train nll PPL 3.519 pi_kl 2.703 diversity 0.039 b_pr 1.080 mi 1.623
+done epoch 41 -> 42
+Val nll PPL 4.105 pi_kl 2.726 diversity 0.039 b_pr 1.154 mi 1.572
+Total valid loss = 1.4149173156074855
+Test nll PPL 4.068 pi_kl 2.725 diversity 0.039 b_pr 1.149 mi 1.576
+Total valid loss = 1.4059584322183027
+
+***** Epoch 42/50 *****
+228/1416-(0.000): Train nll PPL 3.563 pi_kl 2.710 diversity 0.039 b_pr 1.087 mi 1.622
+528/1416-(0.000): Train nll PPL 3.556 pi_kl 2.704 diversity 0.039 b_pr 1.082 mi 1.622
+828/1416-(0.000): Train nll PPL 3.525 pi_kl 2.706 diversity 0.039 b_pr 1.084 mi 1.622
+1128/1416-(0.000): Train nll PPL 3.429 pi_kl 2.709 diversity 0.038 b_pr 1.078 mi 1.631
+Checkpoint step at 2020-05-14 14-00-10
+==== Evaluating Model ====
+Train nll PPL 3.511 pi_kl 2.707 diversity 0.039 b_pr 1.082 mi 1.625
+done epoch 42 -> 43
+Val nll PPL 4.115 pi_kl 2.728 diversity 0.038 b_pr 1.143 mi 1.585
+Total valid loss = 1.4174090857091157
+Test nll PPL 4.067 pi_kl 2.726 diversity 0.038 b_pr 1.137 mi 1.589
+Total valid loss = 1.405587076622507
+
+***** Epoch 43/50 *****
+12/1416-(0.000): Train nll PPL 3.372 pi_kl 2.719 diversity 0.040 b_pr 1.081 mi 1.638
+312/1416-(0.000): Train nll PPL 3.542 pi_kl 2.715 diversity 0.038 b_pr 1.087 mi 1.628
+612/1416-(0.000): Train nll PPL 3.523 pi_kl 2.711 diversity 0.039 b_pr 1.078 mi 1.634
+912/1416-(0.000): Train nll PPL 3.568 pi_kl 2.714 diversity 0.039 b_pr 1.087 mi 1.627
+1212/1416-(0.000): Train nll PPL 3.488 pi_kl 2.709 diversity 0.039 b_pr 1.079 mi 1.630
+Checkpoint step at 2020-05-14 14-00-54
+==== Evaluating Model ====
+Train nll PPL 3.515 pi_kl 2.713 diversity 0.039 b_pr 1.082 mi 1.631
+done epoch 43 -> 44
+Val nll PPL 4.126 pi_kl 2.733 diversity 0.039 b_pr 1.140 mi 1.592
+Total valid loss = 1.4199617494707522
+Test nll PPL 4.071 pi_kl 2.732 diversity 0.039 b_pr 1.137 mi 1.595
+Total valid loss = 1.4065229177474976
+
+***** Epoch 44/50 *****
+96/1416-(0.000): Train nll PPL 3.427 pi_kl 2.716 diversity 0.040 b_pr 1.078 mi 1.638
+396/1416-(0.000): Train nll PPL 3.481 pi_kl 2.713 diversity 0.039 b_pr 1.076 mi 1.637
+696/1416-(0.000): Train nll PPL 3.542 pi_kl 2.714 diversity 0.039 b_pr 1.085 mi 1.630
+996/1416-(0.000): Train nll PPL 3.539 pi_kl 2.711 diversity 0.039 b_pr 1.075 mi 1.636
+1296/1416-(0.000): Train nll PPL 3.537 pi_kl 2.717 diversity 0.039 b_pr 1.073 mi 1.644
+Checkpoint step at 2020-05-14 14-01-57
+==== Evaluating Model ====
+Train nll PPL 3.519 pi_kl 2.713 diversity 0.039 b_pr 1.077 mi 1.637
+done epoch 44 -> 45
+Val nll PPL 4.122 pi_kl 2.726 diversity 0.038 b_pr 1.136 mi 1.590
+Total valid loss = 1.4190162694972495
+Test nll PPL 4.067 pi_kl 2.726 diversity 0.038 b_pr 1.131 mi 1.596
+Total valid loss = 1.4056714534759522
+
+***** Epoch 45/50 *****
+180/1416-(0.000): Train nll PPL 3.417 pi_kl 2.715 diversity 0.038 b_pr 1.073 mi 1.642
+480/1416-(0.000): Train nll PPL 3.430 pi_kl 2.714 diversity 0.039 b_pr 1.077 mi 1.637
+780/1416-(0.000): Train nll PPL 3.482 pi_kl 2.716 diversity 0.039 b_pr 1.079 mi 1.637
+1080/1416-(0.000): Train nll PPL 3.486 pi_kl 2.711 diversity 0.038 b_pr 1.069 mi 1.643
+1380/1416-(0.000): Train nll PPL 3.531 pi_kl 2.712 diversity 0.039 b_pr 1.072 mi 1.640
+Checkpoint step at 2020-05-14 14-02-45
+==== Evaluating Model ====
+Train nll PPL 3.476 pi_kl 2.713 diversity 0.039 b_pr 1.074 mi 1.639
+done epoch 45 -> 46
+Val nll PPL 4.113 pi_kl 2.728 diversity 0.038 b_pr 1.144 mi 1.583
+Total valid loss = 1.4168801789698393
+Test nll PPL 4.061 pi_kl 2.727 diversity 0.038 b_pr 1.139 mi 1.588
+Total valid loss = 1.404108468864275
+
+***** Epoch 46/50 *****
+264/1416-(0.000): Train nll PPL 3.495 pi_kl 2.708 diversity 0.038 b_pr 1.076 mi 1.632
+564/1416-(0.000): Train nll PPL 3.447 pi_kl 2.714 diversity 0.038 b_pr 1.069 mi 1.645
+864/1416-(0.000): Train nll PPL 3.432 pi_kl 2.715 diversity 0.039 b_pr 1.071 mi 1.644
+1164/1416-(0.000): Train nll PPL 3.477 pi_kl 2.722 diversity 0.039 b_pr 1.081 mi 1.641
+Checkpoint step at 2020-05-14 14-03-29
+==== Evaluating Model ====
+Train nll PPL 3.462 pi_kl 2.716 diversity 0.038 b_pr 1.076 mi 1.640
+done epoch 46 -> 47
+Val nll PPL 4.129 pi_kl 2.731 diversity 0.038 b_pr 1.139 mi 1.592
+Total valid loss = 1.4208811806595845
+Test nll PPL 4.076 pi_kl 2.732 diversity 0.038 b_pr 1.133 mi 1.599
+Total valid loss = 1.4078129669894344
+
+***** Epoch 47/50 *****
+48/1416-(0.000): Train nll PPL 3.477 pi_kl 2.716 diversity 0.039 b_pr 1.068 mi 1.648
+348/1416-(0.000): Train nll PPL 3.502 pi_kl 2.720 diversity 0.039 b_pr 1.083 mi 1.637
+648/1416-(0.000): Train nll PPL 3.510 pi_kl 2.712 diversity 0.039 b_pr 1.071 mi 1.641
+948/1416-(0.000): Train nll PPL 3.404 pi_kl 2.709 diversity 0.039 b_pr 1.073 mi 1.636
+1248/1416-(0.000): Train nll PPL 3.393 pi_kl 2.716 diversity 0.039 b_pr 1.069 mi 1.648
+Checkpoint step at 2020-05-14 14-04-18
+==== Evaluating Model ====
+Train nll PPL 3.458 pi_kl 2.714 diversity 0.039 b_pr 1.073 mi 1.641
+done epoch 47 -> 48
+Val nll PPL 4.148 pi_kl 2.727 diversity 0.038 b_pr 1.131 mi 1.596
+Total valid loss = 1.425324578907179
+Test nll PPL 4.102 pi_kl 2.726 diversity 0.038 b_pr 1.125 mi 1.601
+Total valid loss = 1.4140979725381602
+
+***** Epoch 48/50 *****
+132/1416-(0.000): Train nll PPL 3.427 pi_kl 2.714 diversity 0.039 b_pr 1.071 mi 1.643
+432/1416-(0.000): Train nll PPL 3.465 pi_kl 2.722 diversity 0.039 b_pr 1.073 mi 1.649
+732/1416-(0.000): Train nll PPL 3.517 pi_kl 2.721 diversity 0.039 b_pr 1.072 mi 1.649
+1032/1416-(0.000): Train nll PPL 3.542 pi_kl 2.713 diversity 0.039 b_pr 1.075 mi 1.638
+1332/1416-(0.000): Train nll PPL 3.386 pi_kl 2.719 diversity 0.039 b_pr 1.070 mi 1.649
+Checkpoint step at 2020-05-14 14-05-07
+==== Evaluating Model ====
+Train nll PPL 3.467 pi_kl 2.719 diversity 0.039 b_pr 1.073 mi 1.646
+done epoch 48 -> 49
+Val nll PPL 4.148 pi_kl 2.746 diversity 0.039 b_pr 1.144 mi 1.602
+Total valid loss = 1.4252649804820186
+Test nll PPL 4.094 pi_kl 2.744 diversity 0.038 b_pr 1.139 mi 1.604
+Total valid loss = 1.41228681543599
+
+***** Epoch 49/50 *****
+216/1416-(0.000): Train nll PPL 3.366 pi_kl 2.729 diversity 0.039 b_pr 1.072 mi 1.657
+516/1416-(0.000): Train nll PPL 3.463 pi_kl 2.723 diversity 0.040 b_pr 1.077 mi 1.646
+816/1416-(0.000): Train nll PPL 3.452 pi_kl 2.724 diversity 0.039 b_pr 1.074 mi 1.651
+1116/1416-(0.000): Train nll PPL 3.519 pi_kl 2.724 diversity 0.039 b_pr 1.075 mi 1.648
+0/1416-(0.000): Train nll PPL 3.511 pi_kl 2.730 diversity 0.039 b_pr 1.081 mi 1.650
+Checkpoint step at 2020-05-14 14-05-53
+==== Evaluating Model ====
+Train nll PPL 3.468 pi_kl 2.726 diversity 0.039 b_pr 1.076 mi 1.650
+done epoch 49 -> 50
+Val nll PPL 4.132 pi_kl 2.745 diversity 0.039 b_pr 1.139 mi 1.606
+Total valid loss = 1.421583650423133
+Test nll PPL 4.080 pi_kl 2.744 diversity 0.039 b_pr 1.134 mi 1.609
+Total valid loss = 1.4089403007341468
+Forward Only Evaluation
+Val nll PPL 4.089 pi_kl 2.726 diversity 0.038 b_pr 1.144 mi 1.582
+Total valid loss = 1.4111082766367042
+Test nll PPL 4.048 pi_kl 2.725 diversity 0.038 b_pr 1.141 mi 1.584
+Total valid loss = 1.400833136620729
